@@ -24,9 +24,9 @@
 | Column                | Type    | Options                       |
 | --------------------- | ------- | ----------------------------- |
 | name                  | string  | null: false                   |
-| item_text             | text    | null: false                   | 
+| text                  | text    | null: false                   | 
 | category              | integer | null: false                   |
-| item_condition        | integer | null: false                   |
+| condition             | integer | null: false                   |
 | shipping_fee          | integer | null: false                   | 
 | shipping_area         | integer | null: false                   |
 | delivery_days         | integer | null: false                   |
