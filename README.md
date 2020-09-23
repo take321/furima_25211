@@ -51,6 +51,7 @@
 
 - belongs_to :user
 - belongs_to :item
+- has_one :shipping_address
 
 
 
@@ -61,3 +62,7 @@
 | postal_code      | string     | null: false                    |
 | prefectures      | integer    | null: false                    |
 | municipalities   | string     | null: false                    |
+
+### Association
+
+- belongs_to :order
