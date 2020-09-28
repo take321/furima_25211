@@ -1,5 +1,8 @@
 require 'rails_helper'
 RSpec.describe User, type: :model do
+  before do
+    @user = FactoryBot.build(:user)
+  end
   describe 'ユーザー新規登録' do
     context '新規登録がうまくいくとき' do
       it "全ての欄が埋まっていれば登録できる" do
@@ -23,7 +26,7 @@ RSpec.describe User, type: :model do
     context '新規登録がうまくいかないとき' do
       it "nicknameが空だと登録できない" do
       end
-      it "emailが空だと登録できない"　do
+      it "emailが空だと登録できない" do
       end
       it "emailが重複していた場合登録できない" do
       end
