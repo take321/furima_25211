@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: :show
   def index
     @items = Item.order(id: "DESC")
   end
@@ -16,9 +17,16 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
   
   def item_params
     params.require(:item).permit(:name, :text, :category_id, :condition_id, :shipping_fee_id, :shipping_area_id, :delivery_day_id, :price, :image).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
