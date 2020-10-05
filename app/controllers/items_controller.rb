@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update]
-  before_action :login_access_limit, only: [:edit, :update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :seller_access_limit, only: [:edit, :update, :destroy]
   def index
     @items = Item.order(id: "DESC")
   end
@@ -25,6 +25,14 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
+  end
   private
   
   def item_params
@@ -35,7 +43,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def login_access_limit
+  def seller_access_limit
     redirect_to root_path unless current_user.id == @item.user_id 
   end
 end
