@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update]
+  before_action :login_access_limit, only: [:edit, :update]
   def index
     @items = Item.order(id: "DESC")
   end
@@ -38,5 +39,9 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def login_access_limit
+    redirect_to root_path unless current_user.id == @item.user_id 
   end
 end
