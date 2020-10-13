@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :prefectures
+  belongs_to :user
+  has_one :item
+  has_one :shipping_address
 end

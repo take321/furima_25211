@@ -29,7 +29,7 @@
 | condition_id          | integer | null: false                   |
 | shipping_fee_id       | integer | null: false                   | 
 | shipping_area_id      | integer | null: false                   |
-| delivery_day_id      | integer | null: false                   |
+| delivery_day_id       | integer | null: false                   |
 | price                 | integer | null: false                   | 
 | user_id               | integer | null: false, foreign_key: true|
 
@@ -50,7 +50,7 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :item
+- has_one :item
 - has_one :shipping_address
 
 
@@ -60,7 +60,7 @@
 | Column           | Type       | Options                        | 
 | ---------------- | ---------- | ------------------------------ |
 | postal_code      | string     | null: false                    |
-| prefectures_id   | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
 | city_wards_towns | string     | null: false                    |
 | address          | string     | null: false                    |
 | building_name    | string     |                                |
