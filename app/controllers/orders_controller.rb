@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
-  before_action :bought_back, only: [:index]
+  before_action :bought_back, only: [:index, :create]
+  before_action :sign_in_back, only: [:index, :create]
 
   def index
     @order_credit = OrderCredit.new
@@ -40,9 +41,13 @@ class OrdersController < ApplicationController
   def bought_back
     Order.all.each do |order|
       if params[:item_id].to_i == order.item_id
-        redirect_to new_user_session_path
+        redirect_to root_path
       end
     end
+  end
+
+  def sign_in_back
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
 end
