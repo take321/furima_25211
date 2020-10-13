@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
+  before_action :bought_back, only: [:index]
 
   def index
     @order_credit = OrderCredit.new
@@ -35,4 +36,13 @@ class OrdersController < ApplicationController
       currency:'jpy'
     )
   end
+
+  def bought_back
+    Order.all.each do |order|
+      if params[:item_id].to_i == order.item_id
+        redirect_to new_user_session_path
+      end
+    end
+  end
+
 end
