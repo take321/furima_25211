@@ -15,7 +15,6 @@ class OrdersController < ApplicationController
       @order_credit.save(current_user.id, params[:item_id])
       return redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       render :index
     end
   end
