@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
   before_action :bought_back, only: [:index, :create]
   before_action :sign_in_back, only: [:index, :create]
+  before_action :seller_buy_try_back, only: [:index, :create]
 
   def index
     @order_credit = OrderCredit.new
@@ -48,6 +49,10 @@ class OrdersController < ApplicationController
 
   def sign_in_back
     redirect_to new_user_session_path unless user_signed_in?
+  end
+
+  def seller_buy_try_back
+    redirect_to root_path if user_signed_in? && current_user.id == @item.user_id
   end
 
 end
