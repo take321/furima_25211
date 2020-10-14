@@ -56,6 +56,11 @@ RSpec.describe OrderCredit, type: :model do
         @order_credit.valid?
         expect(@order_credit.errors.full_messages).to include("Phone is invalid")
       end
+      it '電話番号にハイフンが入っているときは登録できない' do
+        @order_credit.phone = 123-4567-01
+        @order_credit.valid?
+        expect(@order_credit.errors.full_messages).to include("Phone is invalid")
+      end
       it 'トークンが取得できていないと登録できない' do
         @order_credit.token = ""
         @order_credit.valid?
