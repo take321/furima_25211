@@ -9,8 +9,8 @@ FactoryBot.define do
     address          {"青山1-1-1"}
     building_name    {"タケウチハイツ"}
     phone            {Faker::Number.number(digits: 11)}
-    item_id          {Faker::Number.within(digits: 1)}
-    user_id          {Faker::Number.within(digits: 1)}
+    item_id          {Faker::Number.number(digits: 1)}
+    user_id          {Faker::Number.number(digits: 1)}
     token            {"tok_26ee5080b474ef3b538d6659620d"}
   end
 end

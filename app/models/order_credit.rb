@@ -9,7 +9,6 @@ class OrderCredit
     validates :city_wards_towns
     validates :address
     validates :phone, format: {with: /\d{11}/}
-    validates :user_id
     validates :token, presence: {message: "There is an error in the card information"}
   end
 
