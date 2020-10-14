@@ -42,8 +42,13 @@ RSpec.describe OrderCredit, type: :model do
         @order_credit.valid?
         expect(@order_credit.errors.full_messages).to include("Phone can't be blank")
       end
-      it '電話番号が11文字に満たないと登録できない' do
-        @order_credit.phone = 1234567890
+      it '電話番号が10文字または11文字でないと登録できない' do
+        @order_credit.phone = 123456789
+        @order_credit.valid?
+        expect(@order_credit.errors.full_messages).to include("Phone is invalid")
+      end
+      it '電話番号が10文字または11文字でないと登録できない' do
+        @order_credit.phone = 123456789012
         @order_credit.valid?
         expect(@order_credit.errors.full_messages).to include("Phone is invalid")
       end
