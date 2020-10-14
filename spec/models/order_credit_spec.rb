@@ -9,6 +9,10 @@ RSpec.describe OrderCredit, type: :model do
       it 'すべての欄が埋まっていれば登録できる' do
         expect(@order_credit).to be_valid
       end
+      it '建物名が空でも登録できる' do
+        @order_credit.building_name = ""
+        expect(@order_credit).to be_valid
+      end
     end
 
     context 'shipping_addressesテーブルへの保存がうまくいかないとき' do
