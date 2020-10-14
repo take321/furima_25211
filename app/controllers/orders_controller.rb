@@ -39,10 +39,8 @@ class OrdersController < ApplicationController
   end
 
   def bought_back
-    Order.all.each do |order|
-      if params[:item_id].to_i == order.item_id
+    if Order.exists?(item_id: params[:item_id])
         redirect_to root_path
-      end
     end
   end
 
