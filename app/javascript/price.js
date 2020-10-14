@@ -10,4 +10,4 @@ function display(){
     profitForm.innerHTML = parseInt(profit, 10);
   });
 }
-window.addEventListener("turbolinks:load", display);
+window.addEventListener("load", display);
