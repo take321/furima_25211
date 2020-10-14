@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
   before_action :bought_back, only: [:index, :create]
-  before_action :sign_in_back, only: [:index, :create]
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :seller_buy_try_back, only: [:index, :create]
 
   def index
@@ -42,10 +42,6 @@ class OrdersController < ApplicationController
     if Order.exists?(item_id: params[:item_id])
         redirect_to root_path
     end
-  end
-
-  def sign_in_back
-    authenticate_user!
   end
 
   def seller_buy_try_back
